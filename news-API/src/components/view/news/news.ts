@@ -1,14 +1,6 @@
 import './news.css';
+import IData from '../iDataInterface';
 
-interface IData {
-    urlToImage: string; 
-    author: string; 
-    source: {id:string; name: string; }; 
-    publishedAt: string; 
-    title: string; 
-    description: string; 
-    url: string;
-}
 
 class News {
     draw(data: Array<IData>):void {
