@@ -1,7 +1,8 @@
+import IData from '../view/iDataInterface';
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
-    getSources(callback: () => void):void {
+    getSources(callback: (data?:IData) => void):void {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -10,9 +11,9 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: { target:HTMLElement; currentTarget: HTMLElement; }, callback: () => void):void {
-        let target = e.target;
-        const newsContainer = e.currentTarget;
+    getNews(e:Event, callback: (data?:IData) => void):void {
+        let target:HTMLElement = e.target as HTMLElement;
+        const newsContainer = e.currentTarget as Element;
 
         while (target !== newsContainer) {
             if (target.classList.contains('source__item')) {
