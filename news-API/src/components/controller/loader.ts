@@ -7,7 +7,7 @@ class Loader {
     }
 
     getResp(obj:{ endpoint:string, options?: {} },
-        callback = () => {
+        callback = ():void => {
             console.error('No callback for GET response');
         }
     ):void {
