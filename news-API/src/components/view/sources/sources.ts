@@ -1,5 +1,6 @@
-import IData from '../iDataInterface';
 import './sources.css';
+
+
 
 class Sources {
     draw(data: Array<{[key:string]: string}>):void {
