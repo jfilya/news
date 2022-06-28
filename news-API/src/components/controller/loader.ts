@@ -15,8 +15,11 @@ class Loader {
     }
 
     errorHandler(res:Response):Response {
+        type state = 401 | 404;
+        let status401: state = 401
+        let status404: state = 404
         if (!res.ok) {
-            if (res.status === 401 || res.status === 404)
+            if (res.status === status401 || res.status === status404)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
             throw Error(res.statusText);
         }
