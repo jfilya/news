@@ -1,6 +1,6 @@
 class Loader {
-    private baseLink:string;
-    private options: {apiKey:string};
+    protected readonly baseLink:string;
+    protected readonly options: {apiKey:string};
     constructor(baseLink:string, options: {apiKey:string}) {
         this.baseLink = baseLink;
         this.options = options;
