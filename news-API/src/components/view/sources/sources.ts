@@ -18,7 +18,6 @@ class Sources {
 
         let list: NodeListOf<Element> = document.querySelectorAll('.pagination li');
         showPage(list[0]);
-        console.log(list)
         list.forEach(li => {
               li.addEventListener('click', ():void =>{
                 showPage(li)
