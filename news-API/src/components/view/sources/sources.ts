@@ -30,9 +30,16 @@ class Sources {
                active.classList.remove('active') 
             }
             li.classList.add('active')
+
             let pageNum:number = +li.innerHTML ;
-            let start:number = (pageNum-1)* notesOnPage;
-            let end:number = start + notesOnPage;
+            enum Page {
+                start = (pageNum-1)* notesOnPage,
+                end = start + notesOnPage,
+              }
+
+            let start:Page = Page.start;
+            let end:Page = Page.end;
+            
             let notes:Array<{[key:string]: string}> = data.slice(start, end)
         
             document.querySelector('.sources').innerHTML = ''
