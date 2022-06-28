@@ -1,9 +1,11 @@
 import './sources.css';
 
-
+interface objKeyString {
+    [key:string]: string
+}
 
 class Sources {
-    draw(data: Array<{[key:string]: string}>):void {
+    draw(data: Array<objKeyString>):void {
         const fragment:DocumentFragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
         let pagination = document.querySelector('.pagination') as HTMLElement;
@@ -41,7 +43,7 @@ class Sources {
             let start:Page = Page.start;
             let end:Page = Page.end;
             
-            let notes:Array<{[key:string]: string}> = data.slice(start, end)
+            let notes:Array<objKeyString> = data.slice(start, end)
         
             document.querySelector('.sources').innerHTML = ''
             for(let item of notes){
