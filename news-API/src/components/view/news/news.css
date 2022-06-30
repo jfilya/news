@@ -187,3 +187,8 @@
         padding-left: 25px;
     }
 }
+@media screen and (max-width: 783px) {
+    .news{
+        height: 100vh;
+    }
+}
