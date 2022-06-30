@@ -1,5 +1,5 @@
 {
-  "name": "newsjs",
+  "name": "news-api",
   "version": "1.0.0",
   "description": "",
   "main": "webpack.base.config.js",
@@ -11,10 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/rolling-scopes-school/jfilya-JSFE2022Q1/news-API"
   },
   "keywords": [],
-  "author": "Aleh Serhiyenia",
+  "author": "Julia Filippova",
   "license": "ISC",
   "homepage": "",
   "devDependencies": {
