@@ -69,6 +69,14 @@ class Sources {
                 fragment.append(sourceClone);
             }
             document.querySelector('.sources').append(fragment);
+            document.querySelectorAll('.source__item').forEach((btn) =>
+                btn.addEventListener('click', () => {
+                    document.querySelector('.news').scrollIntoView({
+                        block: 'nearest',
+                        behavior: 'smooth',
+                    });
+                })
+            );
         }
     }
 }
