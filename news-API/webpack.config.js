@@ -10,6 +10,13 @@ const baseConfig = {
     module: {
         rules: [
             {
+                test:/\.jpg$/,
+                loader: 'file-loader',
+                options: {
+                    name: 'img/[name].[ext]'
+                }
+            },
+            {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
             },
