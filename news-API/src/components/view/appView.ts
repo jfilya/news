@@ -4,21 +4,21 @@ import IData from './iDataInterface';
 
 export class AppView {
     public sources: Sources;
-    public news:News;
+    public news: News;
     constructor() {
         this.news = new News();
         this.sources = new Sources();
     }
 
-    drawNews(data:IData):void {
+    drawNews(data: IData): void {
         const values: IData[] = data?.articles ? data?.articles : [];
         this.news.draw(values);
     }
 
-    drawSources(data:IData):void {
-        const values :{
+    drawSources(data: IData): void {
+        const values: {
             [key: string]: string;
-        }[]= data?.sources ? data?.sources : [];
+        }[] = data?.sources ? data?.sources : [];
         this.sources.draw(values);
     }
 }

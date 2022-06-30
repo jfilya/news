@@ -30,5 +30,6 @@
               "endOfLine": "auto"
             }
           ]
-    }
+    },
+    "ignorePatterns": [".html", "webpack.config.js"]
 }

@@ -10,11 +10,13 @@ class App {
         this.view = new AppView();
     }
 
-    start():void {
+    start(): void {
         document
             .querySelector('.sources')
-            .addEventListener('click', (e) => this.controller.getNews(e, (data:IData) => this.view.drawNews(data)));
-        this.controller.getSources((data:IData) => this.view.drawSources(data));
+            .addEventListener('click', (e: Event) =>
+                this.controller.getNews(e, (data: IData) => this.view.drawNews(data))
+            );
+        this.controller.getSources((data: IData) => this.view.drawSources(data));
     }
 }
 

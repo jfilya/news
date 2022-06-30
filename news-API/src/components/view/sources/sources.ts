@@ -1,55 +1,54 @@
 import './sources.css';
 
 interface objKeyString {
-    [key:string]: string
+    [key: string]: string;
 }
 
 class Sources {
-    draw(data: Array<objKeyString>):void {
-        const fragment:DocumentFragment = document.createDocumentFragment();
-        const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
-        let pagination = document.querySelector('.pagination') as HTMLElement;
+    draw(data: Array<objKeyString>): void {
+        const fragment: DocumentFragment = document.createDocumentFragment();
+        const sourceItemTemp: HTMLTemplateElement = document.querySelector('#sourceItemTemp');
+        const pagination: HTMLUListElement = document.querySelector('.pagination');
+        const notesOnPage = 10 as number;
+        const countOfItem: number = Math.ceil(data.length / notesOnPage);
 
-        let notesOnPage:number = 10;
-        let countOfItem:number = Math.ceil(data.length/notesOnPage)
-
-        for(let i:number = 1; i <= countOfItem; i++){
-            let li = document.createElement('li') as HTMLElement
+        for (let i = 1; i <= countOfItem; i++) {
+            const li = document.createElement('li') as HTMLElement;
             li.innerText = String(i);
-            pagination.append(li)
+            pagination.append(li);
         }
 
-        let list: NodeListOf<Element> = document.querySelectorAll('.pagination li');
+        const list: NodeListOf<Element> = document.querySelectorAll('.pagination li');
         showPage(list[0]);
-        list.forEach(li => {
-              li.addEventListener('click', ():void =>{
-                showPage(li)
-            })
-        })
-          
-        function showPage(li: Element):void{
-            let active = document.querySelector('.pagination li.active') as HTMLElement
-            if(active){
-               active.classList.remove('active') 
+        list.forEach((li) => {
+            li.addEventListener('click', (): void => {
+                showPage(li);
+            });
+        });
+
+        function showPage(li: Element): void {
+            const active = document.querySelector('.pagination li.active');
+            if (active) {
+                active.classList.remove('active');
             }
-            li.classList.add('active')
+            li.classList.add('active');
 
-            let pageNum:number = +li.innerHTML ;
+            const pageNum: number = +li.innerHTML;
             enum Page {
-                start = (pageNum-1)* notesOnPage,
-                end = start + notesOnPage,
-              }
+                start = (pageNum - 1) * notesOnPage,
+                end = (pageNum - 1) * notesOnPage + notesOnPage,
+            }
 
-            let start:Page = Page.start;
-            let end:Page = Page.end;
-            
-            let notes:Array<objKeyString> = data.slice(start, end)
-        
-            document.querySelector('.sources').innerHTML = ''
-            for(let item of notes){
-                const sourceClone = sourceItemTemp.content.cloneNode(true) as HTMLTemplateElement;
-        
-                sourceClone.querySelector('.source__item-name').textContent = item.name ;
+            const start: Page = Page.start;
+            const end: Page = Page.end;
+
+            const notes: Array<objKeyString> = data.slice(start, end);
+
+            document.querySelector('.sources').innerHTML = '';
+            for (const item of notes) {
+                const sourceClone: HTMLTemplateElement = sourceItemTemp.content.cloneNode(true) as HTMLTemplateElement;
+
+                sourceClone.querySelector('.source__item-name').textContent = item.name;
                 sourceClone.querySelector('.source__item').setAttribute('data-source-id', item.id);
                 fragment.append(sourceClone);
             }
@@ -57,6 +56,5 @@ class Sources {
         }
     }
 }
-
 
 export default Sources;

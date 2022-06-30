@@ -2,7 +2,7 @@ import IData from '../view/iDataInterface';
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
-    getSources(callback: (data?:IData) => void):void {
+    getSources(callback: (data?: IData) => void): void {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -11,8 +11,8 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e:Event, callback: (data?:IData) => void):void {
-        let target:HTMLElement = e.target as HTMLElement;
+    getNews(e: Event, callback: (data?: IData) => void): void {
+        let target: HTMLElement = e.target as HTMLElement;
         const newsContainer = e.currentTarget as Element;
 
         while (target !== newsContainer) {

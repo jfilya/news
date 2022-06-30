@@ -1,19 +1,18 @@
 import './news.css';
 import IData from '../iDataInterface';
 
-
 class News {
-    draw(data: Array<IData>):void {
-        const news:IData[] = data.length >= 10 ? data.filter((_item:IData, idx: number) => idx < 10) : data;
+    draw(data: Array<IData>): void {
+        const news: IData[] = data.length >= 10 ? data.filter((_item: IData, idx: number) => idx < 10) : data;
 
         const fragment: DocumentFragment = document.createDocumentFragment();
-        const newsItemTemp = document.querySelector('#newsItemTemp') as HTMLTemplateElement;
+        const newsItemTemp: HTMLTemplateElement = document.querySelector('#newsItemTemp');
 
-        news.forEach((item:IData, idx: number) => {
-            const newsClone = newsItemTemp.content.cloneNode(true) as HTMLTemplateElement;
+        news.forEach((item: IData, idx: number) => {
+            const newsClone: HTMLDivElement = newsItemTemp.content.cloneNode(true) as HTMLDivElement;
             if (idx % 2) newsClone.querySelector('.news__item').classList.add('alt');
 
-            (newsClone.querySelector('.news__meta-photo') as HTMLTemplateElement).style.backgroundImage = `url(${
+            newsClone.querySelector<HTMLDivElement>('.news__meta-photo').style.backgroundImage = `url(${
                 item.urlToImage || 'img/news_placeholder.jpg'
             })`;
             newsClone.querySelector('.news__meta-author').textContent = item.author || item.source.name;

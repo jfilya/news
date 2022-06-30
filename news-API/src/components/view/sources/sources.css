@@ -4,6 +4,7 @@
     font: 300 1em 'Fira Sans', sans-serif;
     justify-content: center;
     min-width: 264px;
+    max-width: 264px;
 }
 
 .source__item { 
@@ -43,6 +44,7 @@
   .sources {
     display: flex;
     flex-wrap: wrap;
+    max-width: 100%;
   }
   .source__item{
     width: 280px;
