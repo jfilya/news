@@ -3,6 +3,8 @@ import './sources.css';
 interface objKeyString {
     [key: string]: string;
 }
+type mediaScreen = 783 | 1920 | 990 | 600;
+const widthScreenScroll: mediaScreen = 783;
 
 class Sources {
     draw(data: Array<objKeyString>): void {
@@ -19,7 +21,7 @@ class Sources {
         }
         const arrowLeft: HTMLDivElement = document.querySelector('.arrow-left');
         const arrowRight: HTMLDivElement = document.querySelector('.arrow-right');
-        let indexPage = 0;
+        let indexPage = 0 as number;
         const list: NodeListOf<Element> = document.querySelectorAll('.pagination li');
         showPage(list[0]);
         list.forEach((li) => {
@@ -28,14 +30,14 @@ class Sources {
                 indexPage = +li.innerHTML - 1;
             });
         });
-        arrowRight.addEventListener('click', () => {
+        arrowRight.addEventListener('click', (): void => {
             indexPage += 1;
             if (indexPage > countOfItem - 1) {
                 indexPage = countOfItem - 1;
             }
             showPage(list[indexPage]);
         });
-        arrowLeft.addEventListener('click', () => {
+        arrowLeft.addEventListener('click', (): void => {
             indexPage -= 1;
             if (indexPage < 0) {
                 indexPage = 0;
@@ -43,7 +45,7 @@ class Sources {
             showPage(list[indexPage]);
         });
         function showPage(li: Element): void {
-            const active = document.querySelector('.pagination li.active');
+            const active: HTMLLIElement = document.querySelector('.pagination li.active');
             if (active) {
                 active.classList.remove('active');
             }
@@ -61,6 +63,7 @@ class Sources {
             const notes: Array<objKeyString> = data.slice(start, end);
 
             document.querySelector('.sources').innerHTML = '';
+
             for (const item of notes) {
                 const sourceClone: HTMLTemplateElement = sourceItemTemp.content.cloneNode(true) as HTMLTemplateElement;
 
@@ -69,9 +72,9 @@ class Sources {
                 fragment.append(sourceClone);
             }
             document.querySelector('.sources').append(fragment);
-            if (window.innerWidth <= 783) {
-                document.querySelectorAll('.source__item').forEach((btn) =>
-                    btn.addEventListener('click', () => {
+            if (window.innerWidth <= widthScreenScroll) {
+                document.querySelectorAll('.source__item').forEach((btn: Element) =>
+                    btn.addEventListener('click', (): void => {
                         document.querySelector('.news').scrollIntoView({
                             block: 'nearest',
                             behavior: 'smooth',
