@@ -1,5 +1,6 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
+import IArticles from '../view/IArticlesInterface';
 import IData from '../view/iDataInterface';
 
 class App {
@@ -16,7 +17,7 @@ class App {
             .addEventListener('click', (e: Event) =>
                 this.controller.getNews(e, (data: IData) => this.view.drawNews(data))
             );
-        this.controller.getSources((data: IData) => this.view.drawSources(data));
+        this.controller.getSources((data: IArticles) => this.view.drawSources(data));
     }
 }
 

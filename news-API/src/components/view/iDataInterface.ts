@@ -1,14 +1,7 @@
+import IArticles from './IArticlesInterface';
 interface IData {
-    urlToImage: string;
-    author: string;
-    source: { id: string | null; name: string };
-    publishedAt: string;
-    title: string;
-    description: string;
-    url: string;
     status: string;
     totalResults: number;
-    articles: Array<IData>;
-    sources: Array<{ [key: string]: string }>;
+    articles: Array<IArticles>;
 }
 export default IData;

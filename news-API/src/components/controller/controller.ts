@@ -1,8 +1,9 @@
+import IArticles from '../view/IArticlesInterface';
 import IData from '../view/iDataInterface';
 import AppLoader from './appLoader';
 
 class AppController extends AppLoader {
-    getSources(callback: (data?: IData) => void): void {
+    getSources(callback: (data?: IArticles) => void): void {
         super.getResp(
             {
                 endpoint: 'sources',
