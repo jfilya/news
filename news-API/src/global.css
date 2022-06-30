@@ -6,6 +6,7 @@ body {
     color: #fff;
     background: #17181c;
     font-family: sans-serif;
+    margin:0;
 }
 
 header {
@@ -44,8 +45,9 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding-top: 50px;
+    margin-top: 50px;
     flex-wrap: wrap;
+    background: linear-gradient(#70d6ff, #3fcc59);
 }
 footer .logo-school {
     width: 100px;
@@ -71,6 +73,14 @@ footer .copyright:before {
 .date {
     color: #444;
     font-size: 20px;
+}
+.btn-up{
+    position: fixed;
+    z-index: 5;
+    right: 10%;
+    top: 5%;
+    background: #17181c;
+    border: 2px solid #30c5ff;
 }
 .pagination {
     list-style-type: none;
