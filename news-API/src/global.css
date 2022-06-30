@@ -1,4 +1,4 @@
-*{
+* {
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
@@ -10,13 +10,31 @@ body {
 
 header {
     padding: 10px 30px;
+    max-width: 1070px;
+    margin: 0 auto;
+    position: relative;
 }
 
 header h1 {
     font-size: 40px;
     font-weight: 800;
 }
-main{
+.arrow-left,
+.arrow-right {
+    position: absolute;
+    top: 61%;
+    border: 2px solid #30c5ff;
+    margin: 0.5em;
+    padding: 0.2em 0.5em;
+    cursor: pointer;
+}
+.arrow-left {
+    left: 0%;
+}
+.arrow-right {
+    right: 0%;
+}
+main {
     display: flex;
     justify-content: space-between;
     max-width: 1070px;
@@ -29,7 +47,7 @@ footer {
     padding-top: 50px;
     flex-wrap: wrap;
 }
-footer .logo-school{
+footer .logo-school {
     width: 100px;
 }
 
@@ -47,21 +65,21 @@ footer .copyright a:hover {
 footer .copyright:before {
     content: '©';
 }
-.footer-item{
+.footer-item {
     margin: 20px;
 }
-.date{
-    color:#444;
+.date {
+    color: #444;
     font-size: 20px;
 }
-.pagination{
+.pagination {
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 0;
 }
-li{
+li {
     border: 2px solid #30c5ff;
     font: inherit;
     line-height: 1;
@@ -72,13 +90,44 @@ li{
     cursor: pointer;
     transition: 0.5s;
 }
-li:hover, li.active{
+li:hover,
+li.active,
+.arrow-left:hover,
+.arrow-right:hover {
     border-color: #3fcc59;
     color: #69db7e;
     box-shadow: 0 0.5em 0.5em -0.4em #3fcc59;
 }
-@media screen and (max-width:783px) {
-    main{
+.arrow-left:hover svg path,
+.arrow-right:hover svg path {
+    stroke: #3fcc59;
+}
+@media screen and (max-width: 990px) {
+    .pagination {
+        max-width: 450px;
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width: 783px) {
+    main {
         flex-direction: column;
+    }
+}
+@media screen and (max-width: 600px) {
+    li{
+        display: none;
+    }
+    li.active{
+        display: block;
+    }
+    .arrow-left,
+    .arrow-right {
+        top: 67%;
+    }
+    .arrow-right {
+        right: 20%;
+    }
+    .arrow-left {
+        left: 20%;
     }
 }

@@ -17,15 +17,31 @@ class Sources {
             li.innerText = String(i);
             pagination.append(li);
         }
-
+        const arrowLeft: HTMLDivElement = document.querySelector('.arrow-left');
+        const arrowRight: HTMLDivElement = document.querySelector('.arrow-right');
+        let indexPage = 0;
         const list: NodeListOf<Element> = document.querySelectorAll('.pagination li');
         showPage(list[0]);
         list.forEach((li) => {
             li.addEventListener('click', (): void => {
                 showPage(li);
+                indexPage = +li.innerHTML - 1;
             });
         });
-
+        arrowRight.addEventListener('click', () => {
+            indexPage += 1;
+            if (indexPage > countOfItem - 1) {
+                indexPage = countOfItem - 1;
+            }
+            showPage(list[indexPage]);
+        });
+        arrowLeft.addEventListener('click', () => {
+            indexPage -= 1;
+            if (indexPage < 0) {
+                indexPage = 0;
+            }
+            showPage(list[indexPage]);
+        });
         function showPage(li: Element): void {
             const active = document.querySelector('.pagination li.active');
             if (active) {
