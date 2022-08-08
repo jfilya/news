@@ -1,7 +1,10 @@
 import './news.css';
-import IArticles from '../IArticlesInterface';
+import IArticles from '../../../types/IArticlesInterface';
 
 class News {
+    constructor() {
+        // do nothing.
+    }
     draw(data: Array<IArticles>): void {
         const news: IArticles[] = data.length >= 10 ? data.filter((_item: IArticles, idx: number) => idx < 10) : data;
 

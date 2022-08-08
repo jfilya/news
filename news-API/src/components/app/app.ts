@@ -1,11 +1,11 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
-import IArticles from '../view/IArticlesInterface';
-import IData from '../view/iDataInterface';
+import IArticles from '../../types/IArticlesInterface';
+import IData from '../../types/iDataInterface';
 
 class App {
-    public controller: AppController;
-    public view: AppView;
+    private readonly controller: AppController;
+    private readonly view: AppView;
     constructor() {
         this.controller = new AppController();
         this.view = new AppView();

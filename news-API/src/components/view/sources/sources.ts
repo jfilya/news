@@ -1,13 +1,12 @@
+import { ISourses } from '../../../types/IArticlesInterface';
+import { widthScreenScroll } from '../../../types/mediaScreen';
 import './sources.css';
 
-interface objKeyString {
-    [key: string]: string;
-}
-type mediaScreen = 783 | 1920 | 990 | 600;
-const widthScreenScroll: mediaScreen = 783;
-
 class Sources {
-    draw(data: Array<objKeyString>): void {
+    constructor() {
+        // do nothing.
+    }
+    draw(data: Array<ISourses>): void {
         const fragment: DocumentFragment = document.createDocumentFragment();
         const sourceItemTemp: HTMLTemplateElement = document.querySelector('#sourceItemTemp');
         const pagination: HTMLUListElement = document.querySelector('.pagination');
@@ -60,7 +59,7 @@ class Sources {
             const start: Page = Page.start;
             const end: Page = Page.end;
 
-            const notes: Array<objKeyString> = data.slice(start, end);
+            const notes: Array<ISourses> = data.slice(start, end);
 
             document.querySelector('.sources').innerHTML = '';
 

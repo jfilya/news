@@ -1,8 +1,11 @@
-import IArticles from '../view/IArticlesInterface';
-import IData from '../view/iDataInterface';
-import AppLoader from './appLoader';
+import IArticles from '../../types/IArticlesInterface';
+import IData from '../../types/iDataInterface';
+import { AppLoader } from './appLoader';
 
 class AppController extends AppLoader {
+    constructor() {
+        super();
+    }
     getSources(callback: (data?: IArticles) => void): void {
         super.getResp(
             {

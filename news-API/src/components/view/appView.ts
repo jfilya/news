@@ -1,11 +1,11 @@
 import News from './news/news';
 import Sources from './sources/sources';
-import IData from './iDataInterface';
-import IArticles from './IArticlesInterface';
+import IData from '../../types/iDataInterface';
+import IArticles from '../../types/IArticlesInterface';
 
 export class AppView {
-    public sources: Sources;
-    public news: News;
+    sources: Sources;
+    news: News;
     constructor() {
         this.news = new News();
         this.sources = new Sources();

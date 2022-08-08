@@ -1,13 +1,16 @@
+import { ISourses } from '../../types/IArticlesInterface';
+import { status401, status404 } from '../../types/state';
+
 class Loader {
     protected readonly baseLink: string;
-    protected readonly options: { apiKey: string };
-    constructor(baseLink: string, options: { apiKey: string }) {
+    protected readonly options: ISourses;
+    constructor(baseLink: string, options: ISourses) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
     getResp(
-        obj: { endpoint: string; options?: object },
+        obj: { endpoint: string; options?: ISourses },
         callback = (): void => {
             console.error('No callback for GET response');
         }
@@ -16,9 +19,6 @@ class Loader {
     }
 
     errorHandler(res: Response): Response {
-        type state = 401 | 404;
-        const status401: state = 401;
-        const status404: state = 404;
         if (!res.ok) {
             if (res.status === status401 || res.status === status404)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -28,8 +28,8 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: object, endpoint: string): string {
-        const urlOptions: { [key: string]: string } = { ...this.options, ...options };
+    makeUrl(options: ISourses, endpoint: string): string {
+        const urlOptions: ISourses = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
         Object.keys(urlOptions).forEach((key) => {
@@ -39,7 +39,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string, callback: <T>(data: T) => void, options: object): void {
+    load(method: string, endpoint: string, callback: <T>(data: T) => void, options: ISourses): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler.bind(this))
             .then((res) => res.json())
