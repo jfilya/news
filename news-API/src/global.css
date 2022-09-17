@@ -6,7 +6,7 @@ body {
     color: #fff;
     background: #17181c;
     font-family: sans-serif;
-    margin:0;
+    margin: 0;
 }
 
 header {
@@ -47,7 +47,12 @@ footer {
     justify-content: space-around;
     margin-top: 50px;
     flex-wrap: wrap;
-    background: linear-gradient(#70d6ff, #3fcc59);
+    border-top: 4px solid #17181c;
+    background: #ffffffff;
+    position: fixed;
+    width: 100vw;
+    bottom: 0;
+    z-index: 100;
 }
 footer .logo-school {
     width: 100px;
@@ -74,7 +79,7 @@ footer .copyright:before {
     color: #444;
     font-size: 20px;
 }
-.btn-up{
+.btn-up {
     position: fixed;
     z-index: 5;
     right: 10%;
@@ -124,10 +129,10 @@ li.active,
     }
 }
 @media screen and (max-width: 600px) {
-    li{
+    li {
         display: none;
     }
-    li.active{
+    li.active {
         display: block;
     }
     .arrow-left,
